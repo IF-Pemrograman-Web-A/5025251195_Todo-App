@@ -5,7 +5,16 @@
 - NRP: 5025251195
 
 ## Deskripsi
-Aplikasi Todo App ini dibuat untuk memenuhi evaluasi Pemrograman Web. Fitur yang tersedia dalam aplikasi ini meliputi menambahkan daftar tugas baru, mencoret tugas yang sudah selesai, dan menghapus tugas. Aplikasi ini dibangun menggunakan HTML, CSS, dan JavaScript.
+Aplikasi Todo List berbasis web ini dikembangkan untuk memenuhi penugasan evaluasi **[E01] The Style Warrior** pada mata kuliah Pemrograman Web 
+
+A. Aplikasi ini mendemonstrasikan implementasi antarmuka pengguna yang rapi menggunakan HTML dan CSS, serta interaktivitas pengelolaan data (DOM Manipulation) menggunakan Vanilla JavaScript.
+
+**Tambah Tugas:** Pengguna dapat memasukkan tugas harian baru ke dalam daftar.
+**Tandai Selesai:** Pengguna dapat mencoret tugas yang sudah dikerjakan.
+**Hapus Tugas:** Pengguna dapat menghapus tugas yang sudah tidak relevan dari daftar.
 
 ## Preview
-![Tampilan Todo App](link-gambar-screenshot-aplikasi-kamu-di-sini)
+<img width="1600" height="807" alt="WhatsApp Image 2026-09-13 at 23 50 09" src="https://github.com/user-attachments/assets/ccf721a8-dc23-49e0-9434-9bbf99b3ac50" />
+
+<img width="1600" height="781" alt="WhatsApp Image 2026-09-13 at 23 51 35" src="https://github.com/user-attachments/assets/8ed9aaad-7528-4646-82a8-a6cd52f64aab" />
+
