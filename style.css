@@ -1,0 +1,82 @@
+body {
+    font-family: sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 40px;
+}
+
+.wadah {
+    background-color: white;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-top: 0;
+}
+
+.input-area {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+#inputTugas {
+    flex: 1;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #aaa;
+}
+
+#btnTambah {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#btnTambah:hover {
+    background-color: #0056b3;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 8px;
+    border: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.teks-tugas {
+    cursor: pointer;
+}
+
+.selesai {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.btn-hapus {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+
+.btn-hapus:hover {
+    background-color: #c82333;
+}
