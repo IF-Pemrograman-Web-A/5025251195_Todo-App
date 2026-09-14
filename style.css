@@ -1,150 +1,149 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Courier New', Courier, monospace;
-}
-
 body {
-    background-color: #1a1a2e;
-    color: #e0e0e0;
-    padding: 20px;
-    line-height: 1.5;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+    margin: 0;
+    padding: 30px 20px;
 }
 
 header {
-    background-color: #16213e;
-    padding: 20px;
-    border-left: 5px solid #0f3460;
-    margin-bottom: 25px;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 header h1 {
-    color: #e94560;
-    font-size: 22px;
-    margin-bottom: 5px;
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: #1e3a8a;
 }
 
-.bungkus-layout {
+header p {
+    color: #64748b;
+    font-size: 13px;
+    margin: 5px 0 0 0;
+}
+
+.main-container {
     display: flex;
     gap: 20px;
+    max-width: 850px;
+    margin: 0 auto;
 }
 
-.area-kiri {
-    flex: 65%;
-    background-color: #16213e;
+.left-panel, .right-panel {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
     padding: 20px;
-    border-radius: 4px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
-.area-kanan {
-    flex: 35%;
-    background-color: #16213e;
-    padding: 20px;
-    border-radius: 4px;
-    border-top: 4px solid #e94560;
+.left-panel {
+    flex: 2;
+}
+
+.right-panel {
+    flex: 1;
 }
 
 h2 {
-    color: #e94560;
-    border-bottom: 1px dashed #444;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-    font-size: 16px;
-}
-
-.daftar-kegiatan {
-    list-style: none;
-}
-
-.kartu-tugas {
-    background-color: #0f3460;
+    font-size: 15px;
+    margin-top: 0;
     margin-bottom: 15px;
-    padding: 15px;
-    border-radius: 4px;
+    font-weight: 600;
+    color: #1e3a8a;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 8px;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-item {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
+    padding: 12px 15px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 14px;
 }
 
-.kartu-tugas.selesai {
-    opacity: 0.5;
-}
-
-.kartu-tugas.selesai .teks-tugas strong {
+.task-item.done span {
     text-decoration: line-through;
+    color: #94a3b8;
 }
 
-.teks-tugas strong {
-    color: #fff;
-    display: block;
-    margin-bottom: 5px;
-    font-size: 15px;
-}
-
-.teks-tugas p {
-    font-size: 13px;
-    color: #b0b0b0;
-}
-
-.label {
-    background-color: #e94560;
-    color: white;
+.badge {
     font-size: 11px;
+    background: #e0f2fe;
+    color: #0369a1;
     padding: 3px 8px;
-    border-radius: 10px;
+    border-radius: 4px;
+    font-weight: 500;
 }
 
-.formulir-tugas {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+.form-group {
+    margin-bottom: 15px;
 }
 
-.input-grup label {
+.form-group label {
     display: block;
+    font-size: 12px;
+    font-weight: 500;
     margin-bottom: 5px;
-    font-size: 13px;
-    color: #b0b0b0;
+    color: #475569;
 }
 
-.input-grup input, 
-.input-grup textarea, 
-.input-grup select {
+.form-group input, 
+.form-group textarea {
     width: 100%;
-    padding: 10px;
-    background-color: #1a1a2e;
-    border: 1px solid #0f3460;
-    color: #fff;
-    border-radius: 3px;
+    padding: 8px 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 13px;
+    box-sizing: border-box;
 }
 
-.input-grup input:focus, 
-.input-grup textarea:focus {
+.form-group input:focus, 
+.form-group textarea:focus {
     outline: none;
-    border-color: #e94560;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
 }
 
-.tombol-simpan {
-    background-color: #e94560;
-    color: white;
+button {
+    width: 100%;
+    background: #2563eb;
+    color: #fff;
     border: none;
-    padding: 12px;
+    padding: 9px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
     cursor: pointer;
-    font-weight: bold;
-    border-radius: 3px;
-    margin-top: 10px;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: #1d4ed8;
 }
 
 footer {
-    margin-top: 30px;
     text-align: center;
+    margin-top: 35px;
     font-size: 12px;
-    color: #666;
+    color: #64748b;
 }
 
 @media (max-width: 768px) {
-    .bungkus-layout {
+    .main-container {
         flex-direction: column;
     }
 }
