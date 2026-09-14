@@ -1,82 +1,80 @@
 body {
-    font-family: sans-serif;
-    background-color: #f0f2f5;
+    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 40px;
-}
-
-.wadah {
-    background-color: white;
-    max-width: 400px;
-    margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background-color: #f9f9f9;
 }
 
-h2 {
-    text-align: center;
-    color: #333;
-    margin-top: 0;
-}
-
-.input-area {
-    display: flex;
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
     margin-bottom: 20px;
 }
 
-#inputTugas {
-    flex: 1;
-    padding: 8px;
-    font-size: 14px;
-    border: 1px solid #aaa;
-}
-
-#btnTambah {
-    padding: 8px 15px;
-    background-color: #007bff;
+footer {
+    background-color: #333;
     color: white;
-    border: none;
-    cursor: pointer;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-align: center;
 }
 
-#btnTambah:hover {
-    background-color: #0056b3;
+.wadah-panel {
+    display: flex;
+    gap: 20px;
+}
+
+.panel-kiri {
+    flex: 60%;
+    background-color: white;
+    padding: 15px;
+    border: 1px solid #ccc;
+}
+
+.panel-kanan {
+    flex: 40%;
+    background-color: #eee;
+    padding: 15px;
+    border: 1px solid #ccc;
 }
 
 ul {
     list-style-type: none;
     padding: 0;
-    margin: 0;
 }
 
-li {
-    background-color: #f9f9f9;
+.tugas {
+    background-color: #e3f2fd;
+    margin-bottom: 10px;
     padding: 10px;
-    margin-bottom: 8px;
-    border: 1px solid #eee;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    border: 1px solid #90caf9;
 }
 
-.teks-tugas {
-    cursor: pointer;
+.grup-input {
+    margin-bottom: 15px;
 }
 
-.selesai {
-    text-decoration: line-through;
-    color: #999;
+input[type="text"], textarea, select {
+    width: 90%;
+    padding: 5px;
 }
 
-.btn-hapus {
-    background-color: #dc3545;
+button {
+    padding: 8px 15px;
+    background-color: #28a745;
     color: white;
     border: none;
-    padding: 4px 8px;
     cursor: pointer;
 }
 
-.btn-hapus:hover {
-    background-color: #c82333;
+/* Responsif untuk layar HP */
+@media (max-width: 600px) {
+    .wadah-panel {
+        flex-direction: column;
+    }
+    
+    .panel-kiri, .panel-kanan {
+        flex: 100%;
+    }
 }

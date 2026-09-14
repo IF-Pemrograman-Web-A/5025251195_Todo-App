@@ -3,19 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo App - 5025251195</title>
+    <title>Tugas PWEB - 5025251195</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="wadah">
-        <h2>Todo list Dafa</h2>
-        <div class="input-area">
-            <input type="text" id="inputTugas" placeholder="Mau ngerjain apa hari ini?">
-            <button id="btnTambah">Tambah</button>
-        </div>
-        <ul id="daftarTugas"></ul>
+
+    <header>
+        <h1>Todo List Dafa</h1>
+    </header>
+
+    <div class="wadah-panel">
+        
+        <main class="panel-kiri">
+            <h2>Daftar Tugas</h2>
+            <ul>
+                <li class="tugas">
+                    <b>Tugas 1:</b> Belajar Flexbox
+                    <br> Status: Selesai
+                </li>
+                <li class="tugas">
+                    <b>Tugas 2:</b> Bikin layout web
+                    <br> Status: Belum
+                </li>
+                <li class="tugas">
+                    <b>Tugas 3:</b> Upload ke Github
+                    <br> Status: Belum
+                </li>
+            </ul>
+        </main>
+
+        <aside class="panel-kanan">
+            <h2>Tambah Tugas Baru</h2>
+            <form>
+                <div class="grup-input">
+                    <label for="nama">Nama Tugas:</label><br>
+                    <input type="text" id="nama" name="nama">
+                </div>
+                
+                <div class="grup-input">
+                    <label for="detail">Detail:</label><br>
+                    <textarea id="detail" name="detail"></textarea>
+                </div>
+
+                <div class="grup-input">
+                    <label for="prioritas">Prioritas:</label><br>
+                    <select id="prioritas" name="prioritas">
+                        <option>Tinggi</option>
+                        <option>Biasa</option>
+                    </select>
+                </div>
+
+                <button type="button">Simpan</button>
+            </form>
+        </aside>
+
     </div>
 
-    <script src="script.js"></script>
+    <footer>
+        <p>Dafa Dega Wijaya - 5025251195</p>
+    </footer>
+
 </body>
 </html>
