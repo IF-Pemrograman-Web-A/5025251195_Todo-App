@@ -14,4 +14,4 @@ Beberapa poin teknis yang aku terapin di tugas ini:
 - **Responsif:** Udah ditambahin media query di CSS-nya. Jadi kalau webnya dibuka di layar kecil atau HP, bagian form yang awalnya di kanan otomatis turun ke bawah list biar bacanya tetap enak dan nggak kepotong.
 
 ## Preview
-<img width="1891" height="883" alt="image" src="https://github.com/user-attachments/assets/b1046fdf-4bd5-440d-90b6-4c429055b722" />
+<img width="1905" height="908" alt="image" src="https://github.com/user-attachments/assets/d9a36bd6-2ff6-4164-a279-3a87b8da3144" />
