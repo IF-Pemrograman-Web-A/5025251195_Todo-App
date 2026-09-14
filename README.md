@@ -1,20 +1,17 @@
-# Todo App
+# Todo App - The Style Warrior
 
 ## Identitas
-- Nama: Dafa Dega Wijaya
-- NRP: 5025251195
+- **Nama:** Dafa Dega Wijaya
+- **NRP:** 5025251195
+- **Kelas:** Pemrograman Web A
 
 ## Deskripsi
-Aplikasi Todo List berbasis web ini dikembangkan untuk memenuhi penugasan evaluasi **[E01] The Style Warrior** pada mata kuliah Pemrograman Web 
+Repo ini isinya kodingan buat evaluasi E01a (The Style Warrior). Sesuai instruksi penugasan, web Todo List ini dibikin murni pakai HTML dan CSS eksternal aja, jadi belum ada fungsi JavaScript sama sekali (tombol-tombolnya masih pajangan dan datanya cuma dummy).
 
-A. Aplikasi ini mendemonstrasikan implementasi antarmuka pengguna yang rapi menggunakan HTML dan CSS, serta interaktivitas pengelolaan data (DOM Manipulation) menggunakan Vanilla JavaScript.
-
-**Tambah Tugas:** Pengguna dapat memasukkan tugas harian baru ke dalam daftar.
-**Tandai Selesai:** Pengguna dapat mencoret tugas yang sudah dikerjakan.
-**Hapus Tugas:** Pengguna dapat menghapus tugas yang sudah tidak relevan dari daftar.
+Beberapa poin teknis yang aku terapin di tugas ini:
+- **Struktur Semantik:** Kodingan HTML-nya nggak cuma numpuk `<div>`, tapi udah dirapikan pakai tag semantik kayak `<header>`, `<main>` buat bungkus daftar tugas, `<aside>` buat area form, dan `<footer>`.
+- **Layout Flexbox:** Halamannya dibagi jadi dua panel (kiri buat list kegiatan awal-awal PWEB, kanan buat form input) pakai sistem Flexbox biar bisa sejajar proporsional.
+- **Responsif:** Udah ditambahin media query di CSS-nya. Jadi kalau webnya dibuka di layar kecil atau HP, bagian form yang awalnya di kanan otomatis turun ke bawah list biar bacanya tetap enak dan nggak kepotong.
 
 ## Preview
-<img width="1600" height="807" alt="WhatsApp Image 2026-09-13 at 23 50 09" src="https://github.com/user-attachments/assets/ccf721a8-dc23-49e0-9434-9bbf99b3ac50" />
-
-<img width="1600" height="781" alt="WhatsApp Image 2026-09-13 at 23 51 35" src="https://github.com/user-attachments/assets/8ed9aaad-7528-4646-82a8-a6cd52f64aab" />
-
+<img width="1891" height="883" alt="image" src="https://github.com/user-attachments/assets/b1046fdf-4bd5-440d-90b6-4c429055b722" />
