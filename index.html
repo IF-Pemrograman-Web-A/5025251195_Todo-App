@@ -3,64 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tugas PWEB - 5025251195</title>
+    <title>Sistem Manajemen Tugas - 5025251195</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
-        <h1>Todo List Dafa</h1>
+        <h1> Papan Tugas Harian</h1>
+        <p>Pengguna: Dafa Dega Wijaya (5025251195)</p>
     </header>
 
-    <div class="wadah-panel">
+    <div class="bungkus-layout">
         
-        <main class="panel-kiri">
-            <h2>Daftar Tugas</h2>
-            <ul>
-                <li class="tugas">
-                    <b>Tugas 1:</b> Belajar Flexbox
-                    <br> Status: Selesai
+        <main class="area-kiri">
+            <h2>> Catatan Kegiatan</h2>
+            <ul class="daftar-kegiatan">
+                <li class="kartu-tugas selesai">
+                    <div class="teks-tugas">
+                        <strong>1. Eksplorasi Tag Semantik HTML</strong>
+                        <p>Menerapkan header, main, aside, dan footer pada kerangka web.</p>
+                    </div>
+                    <span class="label">Tuntas</span>
                 </li>
-                <li class="tugas">
-                    <b>Tugas 2:</b> Bikin layout web
-                    <br> Status: Belum
+                <li class="kartu-tugas">
+                    <div class="teks-tugas">
+                        <strong>2. Evaluasi E01a: Layout Flexbox</strong>
+                        <p>Membuat tata letak statis dua panel yang responsif murni CSS.</p>
+                    </div>
+                    <span class="label">Proses</span>
                 </li>
-                <li class="tugas">
-                    <b>Tugas 3:</b> Upload ke Github
-                    <br> Status: Belum
+                <li class="kartu-tugas">
+                    <div class="teks-tugas">
+                        <strong>3. Persiapan DOM Manipulation</strong>
+                        <p>Mempelajari dasar Vanilla JavaScript untuk tugas minggu depan.</p>
+                    </div>
+                    <span class="label">Antre</span>
                 </li>
             </ul>
         </main>
 
-        <aside class="panel-kanan">
-            <h2>Tambah Tugas Baru</h2>
-            <form>
-                <div class="grup-input">
-                    <label for="nama">Nama Tugas:</label><br>
-                    <input type="text" id="nama" name="nama">
+        <aside class="area-kanan">
+            <h2>> Tambah Entri</h2>
+            <form class="formulir-tugas">
+                <div class="input-grup">
+                    <label for="judul">Judul Tugas:</label>
+                    <input type="text" id="judul" placeholder="Ketik di sini...">
                 </div>
                 
-                <div class="grup-input">
-                    <label for="detail">Detail:</label><br>
-                    <textarea id="detail" name="detail"></textarea>
+                <div class="input-grup">
+                    <label for="keterangan">Keterangan:</label>
+                    <textarea id="keterangan" rows="4" placeholder="Detail aktivitas..."></textarea>
                 </div>
 
-                <div class="grup-input">
-                    <label for="prioritas">Prioritas:</label><br>
-                    <select id="prioritas" name="prioritas">
-                        <option>Tinggi</option>
-                        <option>Biasa</option>
+                <div class="input-grup">
+                    <label for="tingkat">Prioritas:</label>
+                    <select id="tingkat">
+                        <option>Kritis (High)</option>
+                        <option>Standar (Medium)</option>
+                        <option>Rendah (Low)</option>
                     </select>
                 </div>
 
-                <button type="button">Simpan</button>
+                <button type="button" class="tombol-simpan">Jalankan Perintah</button>
             </form>
         </aside>
 
     </div>
 
     <footer>
-        <p>Dafa Dega Wijaya - 5025251195</p>
+        <p>&copy; 2026 | Teknik Informatika - Pemrograman Web A</p>
     </footer>
 
 </body>

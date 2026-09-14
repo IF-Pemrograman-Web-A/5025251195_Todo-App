@@ -1,80 +1,150 @@
-body {
-    font-family: Arial, sans-serif;
+* {
+    box-sizing: border-box;
     margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    background-color: #1a1a2e;
+    color: #e0e0e0;
     padding: 20px;
-    background-color: #f9f9f9;
+    line-height: 1.5;
 }
 
 header {
-    background-color: #333;
-    color: white;
-    padding: 10px 20px;
-    margin-bottom: 20px;
+    background-color: #16213e;
+    padding: 20px;
+    border-left: 5px solid #0f3460;
+    margin-bottom: 25px;
 }
 
-footer {
-    background-color: #333;
-    color: white;
-    padding: 10px 20px;
-    margin-top: 20px;
-    text-align: center;
+header h1 {
+    color: #e94560;
+    font-size: 22px;
+    margin-bottom: 5px;
 }
 
-.wadah-panel {
+.bungkus-layout {
     display: flex;
     gap: 20px;
 }
 
-.panel-kiri {
-    flex: 60%;
-    background-color: white;
-    padding: 15px;
-    border: 1px solid #ccc;
+.area-kiri {
+    flex: 65%;
+    background-color: #16213e;
+    padding: 20px;
+    border-radius: 4px;
 }
 
-.panel-kanan {
-    flex: 40%;
-    background-color: #eee;
-    padding: 15px;
-    border: 1px solid #ccc;
+.area-kanan {
+    flex: 35%;
+    background-color: #16213e;
+    padding: 20px;
+    border-radius: 4px;
+    border-top: 4px solid #e94560;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
+h2 {
+    color: #e94560;
+    border-bottom: 1px dashed #444;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
 }
 
-.tugas {
-    background-color: #e3f2fd;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #90caf9;
+.daftar-kegiatan {
+    list-style: none;
 }
 
-.grup-input {
+.kartu-tugas {
+    background-color: #0f3460;
     margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
-input[type="text"], textarea, select {
-    width: 90%;
-    padding: 5px;
+.kartu-tugas.selesai {
+    opacity: 0.5;
 }
 
-button {
-    padding: 8px 15px;
-    background-color: #28a745;
+.kartu-tugas.selesai .teks-tugas strong {
+    text-decoration: line-through;
+}
+
+.teks-tugas strong {
+    color: #fff;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+.teks-tugas p {
+    font-size: 13px;
+    color: #b0b0b0;
+}
+
+.label {
+    background-color: #e94560;
+    color: white;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 10px;
+}
+
+.formulir-tugas {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-grup label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 13px;
+    color: #b0b0b0;
+}
+
+.input-grup input, 
+.input-grup textarea, 
+.input-grup select {
+    width: 100%;
+    padding: 10px;
+    background-color: #1a1a2e;
+    border: 1px solid #0f3460;
+    color: #fff;
+    border-radius: 3px;
+}
+
+.input-grup input:focus, 
+.input-grup textarea:focus {
+    outline: none;
+    border-color: #e94560;
+}
+
+.tombol-simpan {
+    background-color: #e94560;
     color: white;
     border: none;
+    padding: 12px;
     cursor: pointer;
+    font-weight: bold;
+    border-radius: 3px;
+    margin-top: 10px;
 }
 
-/* Responsif untuk layar HP */
-@media (max-width: 600px) {
-    .wadah-panel {
+footer {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .bungkus-layout {
         flex-direction: column;
-    }
-    
-    .panel-kiri, .panel-kanan {
-        flex: 100%;
     }
 }
