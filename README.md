@@ -35,3 +35,21 @@ Pada tugas ini dilakukan pengembangan Todo App menggunakan JavaScript.
 - JavaScript
 
 ## Preview
+### Light mode
+<img width="1906" height="906" alt="image" src="https://github.com/user-attachments/assets/65e88061-d393-4bbd-b902-2ba5e20d82f5" />
+
+### Dark Mode
+<img width="1917" height="930" alt="image" src="https://github.com/user-attachments/assets/37155713-b0e9-4bd6-ad49-6450a34add78" />
+
+<img width="1907" height="915" alt="image" src="https://github.com/user-attachments/assets/4a82d966-3b60-4185-aa35-44b5a936cf28" />
+
+<img width="1902" height="912" alt="image" src="https://github.com/user-attachments/assets/af58abaf-a9f2-40bd-8ae0-1b1fb9cf04e7" />
+
+<img width="1913" height="961" alt="image" src="https://github.com/user-attachments/assets/fddf1449-ae37-4552-a9b3-9f41c917027e" />
+
+<img width="1901" height="917" alt="image" src="https://github.com/user-attachments/assets/dbd0dba1-4fc2-4b6b-918f-fd58cda32b61" />
+
+
+
+
+
