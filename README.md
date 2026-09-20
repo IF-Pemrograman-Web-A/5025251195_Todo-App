@@ -15,3 +15,23 @@ Beberapa poin teknis yang aku terapin di tugas ini:
 
 ## Preview
 <img width="1905" height="908" alt="image" src="https://github.com/user-attachments/assets/d9a36bd6-2ff6-4164-a279-3a87b8da3144" />
+
+# E02 - The JavaScript Dungeon
+
+Pada tugas ini dilakukan pengembangan Todo App menggunakan JavaScript.
+
+## Fitur yang ditambahkan
+- Menambahkan Todo tanpa melakukan refresh halaman
+- Edit Todo
+- Delete Todo
+- Checkbox untuk menandai Todo selesai
+- Data Todo disimpan dalam bentuk object
+- Event Handler menggunakan JavaScript
+- Light/Dark Mode menggunakan class toggle
+
+## Teknologi
+- HTML
+- CSS
+- JavaScript
+
+##Preview
