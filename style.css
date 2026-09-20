@@ -6,6 +6,9 @@ body {
     padding: 30px 20px;
 }
 
+
+/* Header */
+
 header {
     text-align: center;
     margin-bottom: 30px;
@@ -24,6 +27,9 @@ header p {
     margin: 5px 0 0 0;
 }
 
+
+/* Kontainer utama */
+
 .main-container {
     display: flex;
     gap: 20px;
@@ -31,7 +37,11 @@ header p {
     margin: 0 auto;
 }
 
-.left-panel, .right-panel {
+
+/* Panel */
+
+.left-panel,
+.right-panel {
     background: #ffffff;
     border: 1px solid #cbd5e1;
     border-radius: 10px;
@@ -47,6 +57,9 @@ header p {
     flex: 1;
 }
 
+
+/* Judul panel */
+
 h2 {
     font-size: 15px;
     margin-top: 0;
@@ -56,6 +69,9 @@ h2 {
     border-bottom: 2px solid #e2e8f0;
     padding-bottom: 8px;
 }
+
+
+/* Daftar Todo */
 
 .task-list {
     list-style: none;
@@ -67,27 +83,54 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
+
     padding: 12px 15px;
+
     background: #f8fafc;
     border: 1px solid #e2e8f0;
     border-radius: 8px;
+
     margin-bottom: 10px;
+
     font-size: 14px;
 }
+
+
+/* Todo selesai */
 
 .task-item.done span {
     text-decoration: line-through;
     color: #94a3b8;
 }
 
+
+/* Badge */
+
 .badge {
     font-size: 11px;
+
     background: #e0f2fe;
     color: #0369a1;
+
     padding: 3px 8px;
     border-radius: 4px;
+
     font-weight: 500;
 }
+
+
+/* Keterangan Todo */
+
+.task-description {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #64748b;
+}
+
+
+/* Form */
 
 .form-group {
     margin-bottom: 15px;
@@ -95,39 +138,58 @@ h2 {
 
 .form-group label {
     display: block;
+
     font-size: 12px;
     font-weight: 500;
+
     margin-bottom: 5px;
+
     color: #475569;
 }
 
-.form-group input, 
+.form-group input,
 .form-group textarea {
     width: 100%;
+
     padding: 8px 10px;
+
     border: 1px solid #cbd5e1;
     border-radius: 6px;
+
     font-size: 13px;
+
     box-sizing: border-box;
 }
 
-.form-group input:focus, 
+.form-group input:focus,
 .form-group textarea:focus {
     outline: none;
+
     border-color: #2563eb;
+
     box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
 }
 
+
+/* Tombol */
+
 button {
     width: 100%;
+
     background: #2563eb;
     color: #fff;
+
     border: none;
+
     padding: 9px;
+
     border-radius: 6px;
+
     font-size: 13px;
     font-weight: 500;
+
     cursor: pointer;
+
     transition: background 0.2s;
 }
 
@@ -135,15 +197,119 @@ button:hover {
     background: #1d4ed8;
 }
 
+
+/* Tombol aksi Todo */
+
+.task-actions {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.task-actions button {
+    width: auto;
+    padding: 5px 8px;
+}
+
+.edit-button {
+    background: #2563eb;
+}
+
+.delete-button {
+    background: #dc2626;
+}
+
+.delete-button:hover {
+    background: #b91c1c;
+}
+
+
+/* Checkbox */
+
+.task-checkbox {
+    cursor: pointer;
+}
+
+
+/* Tombol mode */
+
+.mode-button {
+    width: 150px;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+
+/* Footer */
+
 footer {
     text-align: center;
+
     margin-top: 35px;
+
     font-size: 12px;
+
     color: #64748b;
 }
 
+
+/* ========================= */
+/* DARK MODE */
+/* ========================= */
+
+body.dark-mode {
+    background-color: #1e293b;
+    color: #f8fafc;
+}
+
+body.dark-mode header h1 {
+    color: #bfdbfe;
+}
+
+body.dark-mode header p,
+body.dark-mode footer {
+    color: #cbd5e1;
+}
+
+body.dark-mode .left-panel,
+body.dark-mode .right-panel {
+    background-color: #334155;
+    border-color: #475569;
+}
+
+body.dark-mode h2 {
+    color: #bfdbfe;
+    border-color: #475569;
+}
+
+body.dark-mode .task-item {
+    background-color: #475569;
+    border-color: #64748b;
+    color: #f8fafc;
+}
+
+body.dark-mode .task-description {
+    color: #cbd5e1;
+}
+
+body.dark-mode .form-group label {
+    color: #e2e8f0;
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group textarea {
+    background-color: #1e293b;
+    color: white;
+    border-color: #64748b;
+}
+
+
+/* Responsive */
+
 @media (max-width: 768px) {
+
     .main-container {
         flex-direction: column;
     }
+
 }

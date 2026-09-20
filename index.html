@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Todo App - 5025251195</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <header>
@@ -13,48 +17,70 @@
         <p>Dafa Dega Wijaya (5025251195)</p>
     </header>
 
+
+    
+
     <div class="main-container">
-        
+
         <main class="left-panel">
+
             <h2>Aktivitas</h2>
+
             <ul class="task-list">
-                <li class="task-item done">
-                    <span>Eksplorasi Tag Semantik HTML</span>
-                    <span class="badge">Selesai</span>
-                </li>
-                <li class="task-item">
-                    <span>Layout Dua Panel Flexbox</span>
-                    <span class="badge">Proses</span>
-                </li>
-                <li class="task-item">
-                    <span>Push Kode ke GitHub</span>
-                    <span class="badge">Antre</span>
-                </li>
             </ul>
+
         </main>
 
+
         <aside class="right-panel">
+
             <h2>Tambah Baru</h2>
-            <form>
+
+            <form id="todo-form">
+
                 <div class="form-group">
-                    <label>Judul</label>
-                    <input type="text" placeholder="Tulis tugas...">
-                </div>
-                
-                <div class="form-group">
-                    <label>Keterangan</label>
-                    <textarea rows="2" placeholder="Detail..."></textarea>
+                    <label for="judul">Judul</label>
+
+                    <input
+                        type="text"
+                        id="judul"
+                        placeholder="Tulis tugas..."
+                    >
                 </div>
 
-                <button type="button">Simpan</button>
+
+                <div class="form-group">
+                    <label for="keterangan">Keterangan</label>
+
+                    <textarea
+                        id="keterangan"
+                        rows="2"
+                        placeholder="Detail..."
+                    ></textarea>
+                </div>
+
+
+                <button
+                    type="button"
+                    id="tombol-simpan"
+                >
+                    Simpan
+                </button>
+
             </form>
+
         </aside>
 
     </div>
+
 
     <footer>
         <p>&copy; 2026 Pemrograman Web A</p>
     </footer>
 
+
+    <script src="script.js"></script>
+
 </body>
+
 </html>
