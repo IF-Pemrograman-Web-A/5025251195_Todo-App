@@ -1,4 +1,4 @@
-# Todo App - The Style Warrior
+# E03 - The Lost Cavern
 
 ## Identitas
 - **Nama:** Dafa Dega Wijaya
@@ -6,50 +6,30 @@
 - **Kelas:** Pemrograman Web A
 
 ## Deskripsi
-Repo ini isinya kodingan buat evaluasi E01a (The Style Warrior). Sesuai instruksi penugasan, web Todo List ini dibikin murni pakai HTML dan CSS eksternal aja, jadi belum ada fungsi JavaScript sama sekali (tombol-tombolnya masih pajangan dan datanya cuma dummy).
+Todo App untuk mengelola daftar tugas dengan penyimpanan lokal, tema Light/Dark, foto tugas, tenggat, dan pengingat notifikasi.
 
-Beberapa poin teknis yang aku terapin di tugas ini:
-- **Struktur Semantik:** Kodingan HTML-nya nggak cuma numpuk `<div>`, tapi udah dirapikan pakai tag semantik kayak `<header>`, `<main>` buat bungkus daftar tugas, `<aside>` buat area form, dan `<footer>`.
-- **Layout Flexbox:** Halamannya dibagi jadi dua panel (kiri buat list kegiatan awal-awal PWEB, kanan buat form input) pakai sistem Flexbox biar bisa sejajar proporsional.
-- **Responsif:** Udah ditambahin media query di CSS-nya. Jadi kalau webnya dibuka di layar kecil atau HP, bagian form yang awalnya di kanan otomatis turun ke bawah list biar bacanya tetap enak dan nggak kepotong.
+## Fitur
+- Menambah, mengedit, menghapus, dan menandai Todo selesai.
+- Menyimpan data Todo, tenggat, waktu pengingat, status, foto, dan deskripsi foto di IndexedDB.
+- Menyimpan preferensi tema Light/Dark di localStorage.
+- Mengambil foto dengan kamera melalui Media Capture API atau memilih gambar dari perangkat.
+- Menampilkan preview foto sebelum menyimpan; foto kamera ditangkap sebagai JPEG dan foto file dibatasi 5 MB.
+- Mendaftarkan Service Worker untuk menampilkan notifikasi, mencegah notifikasi aktif ganda dengan tag, membatalkan notifikasi, dan menangani klik notifikasi.
+- Menggunakan label form, status live region, fokus terlihat, dukungan reduced motion, dan forced-colors.
 
-## Preview
-<img width="1905" height="908" alt="image" src="https://github.com/user-attachments/assets/d9a36bd6-2ff6-4164-a279-3a87b8da3144" />
+## Batasan Pengingat
+Waktu pengingat disimpan bersama Todo di IndexedDB dan dijadwalkan ulang saat aplikasi dibuka atau dimuat ulang. Selama halaman aplikasi berjalan, timer halaman dapat mengirim pesan ke Service Worker untuk menampilkan notifikasi jika browser mendukungnya dan izin notifikasi diberikan.
 
-# E02 - The JavaScript Dungeon
+Penjadwalan menggunakan `setTimeout()` pada halaman utama. Karena itu pengingat **tidak dijamin berjalan saat tab atau browser ditutup**. Service Worker di project ini menampilkan notifikasi setelah menerima pesan; ia tidak menjalankan jadwal sendiri di latar belakang. Pengingat yang terlewat saat aplikasi tidak aktif ditandai, tetapi tidak diputar ulang.
 
-Pada tugas ini dilakukan pengembangan Todo App menggunakan JavaScript.
+Kamera dan Service Worker memerlukan konteks aman seperti `localhost` atau HTTPS. Izin kamera dan notifikasi harus diberikan oleh pengguna dan dapat ditolak oleh browser.
 
-## Fitur yang ditambahkan
-- Menambahkan Todo tanpa melakukan refresh halaman
-- Edit Todo
-- Delete Todo
-- Checkbox untuk menandai Todo selesai
-- Data Todo disimpan dalam bentuk object
-- Event Handler menggunakan JavaScript
-- Light/Dark Mode menggunakan class toggle
+## Menjalankan dan Menguji
+Jalankan project melalui server lokal pada `localhost` atau host HTTPS, lalu:
 
-## Teknologi
-- HTML
-- CSS
-- JavaScript
-
-## Preview
-### Light mode
-<img width="1906" height="906" alt="image" src="https://github.com/user-attachments/assets/65e88061-d393-4bbd-b902-2ba5e20d82f5" />
-
-### Dark Mode
-<img width="1917" height="930" alt="image" src="https://github.com/user-attachments/assets/37155713-b0e9-4bd6-ad49-6450a34add78" />
-
-<img width="1907" height="915" alt="image" src="https://github.com/user-attachments/assets/4a82d966-3b60-4185-aa35-44b5a936cf28" />
-
-<img width="1902" height="912" alt="image" src="https://github.com/user-attachments/assets/af58abaf-a9f2-40bd-8ae0-1b1fb9cf04e7" />
-
-<img width="1913" height="961" alt="image" src="https://github.com/user-attachments/assets/fddf1449-ae37-4552-a9b3-9f41c917027e" />
-
-<img width="1901" height="917" alt="image" src="https://github.com/user-attachments/assets/dbd0dba1-4fc2-4b6b-918f-fd58cda32b61" />
-
-
-
-
-
+1. Tambah Todo, refresh halaman, dan pastikan Todo tetap tersedia.
+2. Ganti tema, refresh, dan pastikan preferensi Light/Dark tetap tersimpan.
+3. Ambil foto dengan kamera atau pilih gambar, isi deskripsi foto, simpan, lalu refresh untuk memeriksa persistence dan alt text.
+4. Beri izin notifikasi, buat pengingat pada waktu mendatang, dan biarkan halaman tetap terbuka sampai waktunya tiba.
+5. Uji edit jadwal, tandai Todo selesai, hapus Todo, serta klik notifikasi untuk memeriksa pembatalan dan navigasi.
+6. Uji seluruh alur dengan keyboard, screen reader, mode Light/Dark, forced-colors, dan prefers-reduced-motion.

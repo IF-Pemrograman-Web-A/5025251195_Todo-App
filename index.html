@@ -13,12 +13,27 @@
 <body>
 
     <header>
-        <h1>Daftar Tugas</h1>
-        <p>Dafa Dega Wijaya (5025251195)</p>
+        <div>
+            <h1>Daftar Tugas</h1>
+            <p>Dafa Dega Wijaya (5025251195)</p>
+        </div>
+
+        <button
+            type="button"
+            id="tombol-mode"
+            class="mode-button"
+            aria-label="Ubah mode tampilan"
+        >
+            Dark Mode
+        </button>
     </header>
 
-
-    
+    <p
+        id="status-aplikasi"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+    ></p>
 
     <div class="main-container">
 
@@ -26,11 +41,12 @@
 
             <h2>Aktivitas</h2>
 
-            <ul class="task-list">
-            </ul>
+            <ul
+                class="task-list"
+                aria-label="Daftar tugas"
+            ></ul>
 
         </main>
-
 
         <aside class="right-panel">
 
@@ -39,29 +55,150 @@
             <form id="todo-form">
 
                 <div class="form-group">
-                    <label for="judul">Judul</label>
+                    <label for="judul">
+                        Judul
+                    </label>
 
                     <input
                         type="text"
                         id="judul"
                         placeholder="Tulis tugas..."
+                        autocomplete="off"
+                        required
                     >
                 </div>
 
-
                 <div class="form-group">
-                    <label for="keterangan">Keterangan</label>
+                    <label for="keterangan">
+                        Keterangan
+                    </label>
 
                     <textarea
                         id="keterangan"
-                        rows="2"
-                        placeholder="Detail..."
+                        rows="3"
+                        placeholder="Detail tugas..."
                     ></textarea>
                 </div>
 
+                <fieldset class="form-group">
+                    <legend>
+                        Foto Tugas
+                    </legend>
+
+                    <div class="photo-actions">
+
+                        <button
+                            type="button"
+                            id="tombol-kamera"
+                        >
+                            Ambil Foto
+                        </button>
+
+                        <button
+                            type="button"
+                            id="tombol-file"
+                        >
+                            Pilih dari File
+                        </button>
+
+                    </div>
+
+                    <input
+                        type="file"
+                        id="input-file"
+                        accept="image/*"
+                        hidden
+                        aria-label="Pilih foto tugas dari file"
+                    >
+
+                    <video
+                        id="preview-kamera"
+                        autoplay
+                        playsinline
+                        muted
+                        hidden
+                        aria-label="Pratinjau kamera"
+                    ></video>
+
+                    <button
+                        type="button"
+                        id="tombol-jepret"
+                        hidden
+                    >
+                        Jepret Foto
+                    </button>
+
+                    <button
+                        type="button"
+                        id="tombol-stop-kamera"
+                        hidden
+                    >
+                        Hentikan Kamera
+                    </button>
+
+                    <canvas
+                        id="canvas-kamera"
+                        hidden
+                    ></canvas>
+
+                    <img
+                        id="preview-foto"
+                        hidden
+                        alt="Pratinjau foto tugas"
+                    >
+                </fieldset>
+
+                <div class="form-group">
+                    <label for="deskripsi-foto">
+                        Deskripsi Foto (jika menggunakan foto)
+                    </label>
+
+                    <input
+                        type="text"
+                        id="deskripsi-foto"
+                        maxlength="200"
+                        aria-describedby="bantuan-deskripsi-foto"
+                    >
+
+                    <small id="bantuan-deskripsi-foto">
+                        Wajib diisi jika foto digunakan. Teks ini menjadi deskripsi gambar.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label for="waktu-tenggat">
+                        Tenggat Tugas
+                    </label>
+
+                    <input
+                        type="datetime-local"
+                        id="waktu-tenggat"
+                        aria-describedby="bantuan-tenggat"
+                    >
+
+                    <small id="bantuan-tenggat">
+                        Waktu batas penyelesaian tugas.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label for="waktu-notifikasi">
+                        Waktu Notifikasi
+                    </label>
+
+                    <input
+                        type="datetime-local"
+                        id="waktu-notifikasi"
+                        aria-describedby="bantuan-notifikasi"
+                    >
+
+                    <small id="bantuan-notifikasi">
+                        Pilih waktu pengingat tugas.
+                    </small>
+                </div>
 
                 <button
-                    type="button"
+                    type="submit"
                     id="tombol-simpan"
                 >
                     Simpan
@@ -73,11 +210,9 @@
 
     </div>
 
-
     <footer>
         <p>&copy; 2026 Pemrograman Web A</p>
     </footer>
-
 
     <script src="script.js"></script>
 
