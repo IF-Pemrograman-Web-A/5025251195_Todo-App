@@ -110,7 +110,8 @@ Bagian ini menyediakan dokumentasi video untuk memperlihatkan penggunaan aplikas
 Video ini memperlihatkan tampilan aplikasi dan pengujian fitur utama, meliputi pengelolaan Todo, perubahan status tugas, penyimpanan data, pergantian tema, serta fitur pendukung yang diuji.
 
 **Video Demo:** 
-<img width="1763" height="1325" alt="Cuplikan layar_5-10-2026_05356_127 0 0 1" src="https://github.com/user-attachments/assets/a93a4cc8-588e-4a0d-b472-01ca4df79f45" />
+https://github.com/user-attachments/assets/2fb9f1d3-22f1-4fdb-a281-538968d6c89d
+
 
 ### 2. Video Pengujian Aksesibilitas Keyboard
 
