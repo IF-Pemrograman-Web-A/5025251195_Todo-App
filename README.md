@@ -1,3 +1,9 @@
+
+
+https://github.com/user-attachments/assets/1c5f3a82-71a0-41a0-8516-2d20ad81ef87
+
+
+
 # E03 - The Lost Cavern
 
 ## Identitas
@@ -110,6 +116,7 @@ Bagian ini menyediakan dokumentasi video untuk memperlihatkan penggunaan aplikas
 Video ini memperlihatkan tampilan aplikasi dan pengujian fitur utama, meliputi pengelolaan Todo, perubahan status tugas, penyimpanan data, pergantian tema, serta fitur pendukung yang diuji.
 
 **Video Demo:** 
+
 https://github.com/user-attachments/assets/2fb9f1d3-22f1-4fdb-a281-538968d6c89d
 
 
@@ -117,7 +124,10 @@ https://github.com/user-attachments/assets/2fb9f1d3-22f1-4fdb-a281-538968d6c89d
 
 Video ini memperlihatkan pengujian navigasi menggunakan keyboard, terutama tombol Tab untuk berpindah antarkontrol, serta pemeriksaan indikator fokus pada elemen interaktif aplikasi.
 
-**Video Aksesibilitas:** [Tonton Pengujian Aksesibilitas Keyboard](GANTI_DENGAN_URL_VIDEO_KEDUA)
+**Video Aksesibilitas:** 
+
+https://github.com/user-attachments/assets/193c06a0-174e-4ae7-9367-66263de41b12
+
 
 ### Skenario Pengujian
 
