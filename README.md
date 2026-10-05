@@ -120,6 +120,11 @@ Video ini memperlihatkan tampilan aplikasi dan pengujian fitur utama, meliputi p
 https://github.com/user-attachments/assets/2fb9f1d3-22f1-4fdb-a281-538968d6c89d
 
 
+untuk Notifikasi sudah muncul tapi di screen record ga nampak,berikut screenshoot buktinya 
+
+<img width="1917" height="960" alt="image" src="https://github.com/user-attachments/assets/dc6a7eea-effc-43cb-98d8-bb83c375bdb6" />
+
+
 ### 2. Video Pengujian Aksesibilitas Keyboard
 
 Video ini memperlihatkan pengujian navigasi menggunakan keyboard, terutama tombol Tab untuk berpindah antarkontrol, serta pemeriksaan indikator fokus pada elemen interaktif aplikasi.
