@@ -1,9 +1,3 @@
-
-
-https://github.com/user-attachments/assets/1c5f3a82-71a0-41a0-8516-2d20ad81ef87
-
-
-
 # E03 - The Lost Cavern
 
 ## Identitas
@@ -131,7 +125,10 @@ Video ini memperlihatkan pengujian navigasi menggunakan keyboard, terutama tombo
 
 **Video Aksesibilitas:** 
 
-https://github.com/user-attachments/assets/193c06a0-174e-4ae7-9367-66263de41b12
+
+
+https://github.com/user-attachments/assets/27217144-cafa-4a08-8b98-bc51dbb7af51
+
 
 
 ### Skenario Pengujian
