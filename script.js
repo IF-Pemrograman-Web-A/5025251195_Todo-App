@@ -7,7 +7,8 @@ let serviceWorkerRegistration = null;
 let notifikasiTimers = new Map();
 const BATAS_UKURAN_FOTO = 5 * 1024 * 1024;
 
-const taskList = document.querySelector(".task-list");
+const taskListBelumSelesai = document.getElementById("todo-belum-selesai");
+const taskListSudahSelesai = document.getElementById("todo-sudah-selesai");
 const inputJudul = document.getElementById("judul");
 const inputKeterangan = document.getElementById("keterangan");
 const tombolSimpan = document.getElementById("tombol-simpan");
@@ -1782,7 +1783,8 @@ function buatAksiTodo(
 }
 
 function tampilkanTodo() {
-    taskList.innerHTML = "";
+    taskListBelumSelesai.innerHTML = "";
+    taskListSudahSelesai.innerHTML = "";
 
     todos.forEach(
         function(todo) {
@@ -1904,6 +1906,10 @@ function tampilkanTodo() {
             li.appendChild(
                 bagianAksi
             );
+
+            const taskList = todo.selesai
+                ? taskListSudahSelesai
+                : taskListBelumSelesai;
 
             taskList.appendChild(
                 li

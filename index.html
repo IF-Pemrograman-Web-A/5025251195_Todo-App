@@ -15,6 +15,7 @@
     <header>
         <div>
             <h1>Daftar Tugas</h1>
+            <p class="header-tagline">Atur tugasmu, selesaikan satu per satu.</p>
             <p>Dafa Dega Wijaya (5025251195)</p>
         </div>
 
@@ -41,10 +42,25 @@
 
             <h2>Aktivitas</h2>
 
-            <ul
-                class="task-list"
-                aria-label="Daftar tugas"
-            ></ul>
+            <section class="todo-section" aria-labelledby="belum-selesai-heading">
+                <h3 id="belum-selesai-heading">Belum Selesai</h3>
+
+                <ul
+                    id="todo-belum-selesai"
+                    class="task-list"
+                    aria-label="Todo belum selesai"
+                ></ul>
+            </section>
+
+            <section class="todo-section" aria-labelledby="sudah-selesai-heading">
+                <h3 id="sudah-selesai-heading">Sudah Selesai</h3>
+
+                <ul
+                    id="todo-sudah-selesai"
+                    class="task-list"
+                    aria-label="Todo sudah selesai"
+                ></ul>
+            </section>
 
         </main>
 
