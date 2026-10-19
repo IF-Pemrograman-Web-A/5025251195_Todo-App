@@ -1,143 +1,81 @@
-# E03 - The Lost Cavern
+# The Iron Citadel
 
-## Identitas
+Aplikasi manajemen tugas berbasis PHP dan MySQL untuk ruang kerja Personal dan Shared. Fitur mencakup autentikasi sesi, CRUD, status tugas, lampiran foto, serta pengingat browser.
 
-* **Nama:** Dafa Dega Wijaya
-* **NRP:** 5025251195
-* **Kelas:** Pemrograman Web A
+## Akses lokal
 
-## Deskripsi
+Tautan ini berlaku setelah server dijalankan. Sesuaikan host, port, atau path bila konfigurasi berbeda.
 
-Todo App merupakan aplikasi pengelola tugas berbasis web yang dikembangkan untuk memenuhi tugas E03 - The Lost Cavern pada mata kuliah Pemrograman Web.
+| Halaman | URL |
+| --- | --- |
+| Login | [login.php](http://127.0.0.1:8000/login.php) |
+| Dashboard Personal | [Personal](http://127.0.0.1:8000/index.php?view=personal) |
+| Ruang kerja Shared | [Shared](http://127.0.0.1:8000/index.php?view=shared) |
+| Riwayat notifikasi | [Notifications](http://127.0.0.1:8000/notifications.php) |
 
-Aplikasi ini menerapkan penyimpanan data menggunakan IndexedDB dan localStorage, pengambilan media melalui Media Capture API, Service Worker, notifikasi pengingat, serta prinsip aksesibilitas untuk mendukung pengalaman penggunaan yang lebih baik.
+XAMPP/Laragon dengan folder `tugas1`: `http://localhost/tugas1/`.
 
-## Fitur Aplikasi
+## Mulai cepat
 
-### 1. Manajemen Todo
+1. Jalankan MySQL dan sesuaikan koneksi di `config.php`.
+2. Siapkan database dengan `data.sql` atau inisialisasi otomatis.
+3. Dari direktori proyek, jalankan `php -S 127.0.0.1:8000`.
+4. Buka login dengan akun demo:
 
-* Menambahkan, mengedit, menghapus, dan menandai Todo sebagai selesai.
-* Menyimpan judul, keterangan, status, tenggat, waktu pengingat, foto, dan deskripsi foto.
-* Mempertahankan data Todo setelah halaman dimuat ulang.
+| Username | Password |
+| --- | --- |
+| `dafa` | `password` |
+| `teman` | `password` |
 
-### 2. Pemisahan Status Tugas
+> **Perhatian:** `data.sql` menghapus tabel aplikasi sebelum membuat ulang skema dan data demo. Backup data terlebih dahulu sebelum impor ulang.
 
-Todo ditampilkan dalam dua bagian untuk memudahkan pengguna mengelola pekerjaan.
+## Fitur
 
-* **Belum Selesai:** menampilkan tugas yang masih perlu dikerjakan.
-* **Sudah Selesai:** menampilkan tugas yang telah diselesaikan.
+- Daftar Personal/Shared, pencarian, filter, dan statistik.
+- Tambah, edit detail/status, toggle selesai, dan hapus tugas.
+- Tenggat, pengingat browser, foto file/kamera, dan deskripsi foto.
+- Tema terang/gelap, tampilan responsif, serta Quick Switch akun demo.
+- Riwayat pengingat, deadline terlewat, dan tugas selesai terjadwal.
 
-Perubahan status checkbox akan memindahkan Todo ke bagian yang sesuai tanpa menghilangkan data tugas.
+## Panduan antarmuka
 
-### 3. Penyimpanan Data
+Bagian ini mendokumentasikan alur yang ditunjukkan pada tampilan aplikasi. Tautan halaman membuka instalasi lokal saat server berjalan di port 8000.
 
-* **IndexedDB:** menyimpan data Todo, termasuk informasi tugas, status, tenggat, waktu pengingat, dan foto.
-* **localStorage:** menyimpan preferensi tema Light Mode dan Dark Mode.
+### 1. Login
 
-### 4. Media Capture API dan Foto
+Halaman login menjadi pintu masuk ke dashboard. Pengguna memasukkan username dan kata sandi; akun demo tersedia untuk mencoba alur Personal dan Shared.
 
-* Mengambil foto secara langsung melalui kamera perangkat.
-* Memilih gambar dari file perangkat.
-* Menampilkan preview foto sebelum Todo disimpan.
-* Menggunakan Canvas API untuk mengambil hasil foto kamera dalam format JPEG.
-* Menyimpan foto bersama data Todo di IndexedDB.
-* Menyediakan deskripsi foto sebagai teks alternatif untuk mendukung aksesibilitas.
+[Buka halaman login](http://127.0.0.1:8000/login.php)
 
-File gambar yang dipilih dari perangkat dibatasi hingga 5 MB.
+### 2. Dashboard Personal
 
-### 5. Tenggat dan Notifikasi
+Dashboard Personal menampilkan ringkasan total, pending, completed, dan overdue, serta tabel tugas milik akun aktif. Banner status memberi umpan balik pengingat browser. Tombol **Aktifkan Notifikasi** meminta izin browser, sedangkan panel **Add New Task** membuat tugas, mengatur kategori/tenggat/pengingat, dan menambahkan foto dari file atau kamera.
 
-* Menentukan tenggat penyelesaian tugas.
-* Mengatur waktu pengingat untuk setiap Todo.
-* Menggunakan Notifications API untuk menampilkan notifikasi browser.
-* Menggunakan Service Worker untuk menangani tampilan notifikasi dan interaksi ketika notifikasi diklik.
-* Mengelola notifikasi berdasarkan identitas Todo untuk membantu mencegah notifikasi aktif ganda.
+[Buka workspace Personal](http://127.0.0.1:8000/index.php?view=personal)
 
-### 6. Light Mode dan Dark Mode
+### 3. Edit tugas dan status
 
-Aplikasi menyediakan tema terang dan gelap dengan warna, kontras, serta tampilan yang disesuaikan agar tetap nyaman digunakan.
+Tombol **Edit** membuka dialog terpusat untuk memperbarui detail tugas. Pilihan status mengikuti nilai yang digunakan aplikasi: **Proses (Belum selesai)** dan **Selesai**. Perubahan disimpan bersama judul, keterangan, kategori, tenggat, pengingat, dan deskripsi foto; kontrol checkbox pada daftar tetap tersedia untuk toggle cepat.
 
-Preferensi tema disimpan di localStorage dan dipulihkan ketika halaman dibuka kembali.
+### 4. Workspace Shared
 
-### 7. Aksesibilitas
+Workspace Shared menampilkan tugas bersama dan identitas pembuatnya. Anggota yang sudah login dapat melihat tugas dan memperbarui statusnya; pengeditan detail serta penghapusan tetap dibatasi kepada pemilik tugas.
 
-* Label form yang jelas.
-* Navigasi keyboard menggunakan Tab dan Shift + Tab.
-* Indikator fokus yang terlihat.
-* Status aplikasi melalui live region.
-* Teks alternatif untuk foto Todo.
-* Dukungan preferensi gerakan melalui `prefers-reduced-motion`.
-* Dukungan mode warna sistem melalui `forced-colors`.
+[Buka workspace Shared](http://127.0.0.1:8000/index.php?view=shared)
 
-## Implementasi Kriteria Tugas E03
+### 5. Quick Switch Account
 
-| Kriteria                         | Implementasi                                                                                               |
-| -------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| Web Storage                      | IndexedDB untuk data Todo dan localStorage untuk preferensi tema.                                          |
-| Media Capture API                | Pengambilan foto melalui kamera, preview, dan pemilihan gambar dari perangkat.                             |
-| Service Worker dan Notifications | Service Worker, field waktu notifikasi, serta pengingat Todo melalui Notifications API.                    |
-| Accessibility                    | Label form, fokus keyboard, nama aksesibel untuk kontrol, dan pengumuman status aplikasi.                  |
-| Accessibility Best Practices     | Kontras warna, teks alternatif gambar, navigasi keyboard, serta dukungan reduced motion dan forced colors. |
+Pada akun demo yang diizinkan, sidebar menyediakan **Quick Switch Account** untuk berpindah antara `dafa` dan `teman`. Fitur ini membantu demonstrasi lintas akun dan tidak ditujukan untuk impersonasi di lingkungan production.
 
-## Teknologi yang Digunakan
+### 6. Filter dan tema
 
-* HTML5
-* CSS3
-* JavaScript
-* IndexedDB
-* localStorage
-* Media Capture API
-* Canvas API
-* Service Worker API
-* Notifications API
+Pencarian memfilter judul/keterangan, sedangkan filter status menyediakan **All status**, **Pending**, **Completed**, dan **Overdue**. Tombol tema pada header berganti antara mode terang dan gelap.
 
-## Cara Menjalankan Aplikasi
+## Dokumentasi
 
-1. Clone atau unduh repository ini ke komputer.
-2. Buka folder project menggunakan Visual Studio Code.
-3. Jalankan `index.html` melalui server lokal, misalnya ekstensi Live Server.
-4. Buka alamat lokal yang disediakan server melalui browser.
-5. Berikan izin kamera dan notifikasi apabila ingin menguji kedua fitur tersebut.
+- [Instalasi dan menjalankan aplikasi](docs/SETUP.md)
+- [Panduan developer lengkap](docs/DEVELOPER_GUIDE.md)
 
-Kamera dan Service Worker memerlukan konteks yang mendukung API browser, seperti `localhost` atau HTTPS. Izin kamera dan notifikasi juga bergantung pada pengaturan browser pengguna.
+**Stack:** PHP 8+, MySQL/MariaDB, PDO, HTML, CSS, JavaScript, Notifications API, Service Worker.
 
-## Demo dan Pengujian
-
-Bagian ini menyediakan dokumentasi video untuk memperlihatkan penggunaan aplikasi dan pengujian aksesibilitas.
-
-### 1. Video Pengujian Keseluruhan Aplikasi
-
-Video ini memperlihatkan tampilan aplikasi dan pengujian fitur utama, meliputi pengelolaan Todo, perubahan status tugas, penyimpanan data, pergantian tema, serta fitur pendukung yang diuji.
-
-**Video Demo:** [Tonton Pengujian Keseluruhan Aplikasi](GANTI_DENGAN_URL_VIDEO_PERTAMA)
-
-### 2. Video Pengujian Aksesibilitas Keyboard
-
-Video ini memperlihatkan pengujian navigasi menggunakan keyboard, terutama tombol Tab untuk berpindah antarkontrol, serta pemeriksaan indikator fokus pada elemen interaktif aplikasi.
-
-**Video Aksesibilitas:** [Tonton Pengujian Aksesibilitas Keyboard](GANTI_DENGAN_URL_VIDEO_KEDUA)
-
-### Skenario Pengujian
-
-| No. | Skenario                                            | Tujuan                                                     |
-| --- | --------------------------------------------------- | ---------------------------------------------------------- |
-| 1   | Menambahkan Todo dan memuat ulang halaman           | Memastikan data tetap tersimpan di IndexedDB.              |
-| 2   | Mengganti Light Mode dan Dark Mode                  | Memastikan preferensi tema tetap tersimpan.                |
-| 3   | Menandai Todo selesai dan membatalkan centang       | Memastikan Todo berpindah ke bagian status yang sesuai.    |
-| 4   | Mengedit dan menghapus Todo                         | Memastikan fungsi pengelolaan tugas berjalan.              |
-| 5   | Mengambil atau memilih foto, lalu menyimpan Todo    | Memeriksa preview dan persistensi foto.                    |
-| 6   | Mengatur waktu pengingat dan menunggu notifikasi    | Memeriksa fungsi notifikasi ketika halaman aplikasi aktif. |
-| 7   | Menavigasi aplikasi menggunakan Tab dan Shift + Tab | Memeriksa urutan fokus dan indikator fokus keyboard.       |
-| 8   | Menguji Light Mode dan Dark Mode                    | Memeriksa konsistensi tampilan dan keterbacaan.            |
-
-## Batasan Pengingat
-
-Waktu pengingat disimpan bersama data Todo di IndexedDB dan dijadwalkan kembali saat aplikasi dibuka atau dimuat ulang.
-
-Pada implementasi saat ini, penjadwalan bergantung pada `setTimeout()` di halaman utama. Ketika waktu pengingat tiba dan halaman aplikasi masih berjalan, timer dapat mengirim pesan ke Service Worker untuk menampilkan notifikasi apabila browser mendukungnya dan izin notifikasi telah diberikan.
-
-**Pengingat tidak dijamin muncul ketika tab atau browser ditutup.** Service Worker pada project ini menampilkan notifikasi setelah menerima pesan, tetapi tidak menjalankan jadwal pengingat secara mandiri di latar belakang. Pengingat yang terlewat saat aplikasi tidak aktif juga tidak diputar ulang.
-
-## Penutup
-
-Project E03 - The Lost Cavern ini menjadi implementasi pembelajaran mengenai penggunaan API web modern, pengelolaan data persisten, pengambilan media, notifikasi browser, serta penerapan aksesibilitas pada aplikasi Todo berbasis web.
+Dikembangkan oleh **Dafa Dega Wijaya** untuk **E04 — The Iron Citadel**, Pemrograman Web A.
