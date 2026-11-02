@@ -18,6 +18,10 @@ if (empty($_SESSION['notification_csrf'])) {
     $_SESSION['notification_csrf'] = bin2hex(random_bytes(32));
 }
 $notificationCsrf = $_SESSION['notification_csrf'];
+if (empty($_SESSION['pwa_sync_csrf'])) {
+    $_SESSION['pwa_sync_csrf'] = bin2hex(random_bytes(32));
+}
+$pwaSyncCsrf = $_SESSION['pwa_sync_csrf'];
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -25,12 +29,16 @@ $notificationCsrf = $_SESSION['notification_csrf'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#17243A">
     <title>The Iron Citadel - Task Dashboard</title>
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" href="icons/icon-192.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="dashboard.css">
 </head>
 
-<body data-account-switched="<?= $accountSwitched ? 'true' : 'false' ?>">
+<body data-account-switched="<?= $accountSwitched ? 'true' : 'false' ?>" data-user-id="<?= (int) $user['id'] ?>">
     <div class="app-layout">
         <?php include 'menu-bar.php'; ?>
 
@@ -45,11 +53,14 @@ $notificationCsrf = $_SESSION['notification_csrf'];
                         <span class="user-avatar" aria-hidden="true"><?= htmlspecialchars(strtoupper(substr($displayName, 0, 1)), ENT_QUOTES, 'UTF-8') ?></span>
                         <span><?= htmlspecialchars($displayName, ENT_QUOTES, 'UTF-8') ?></span>
                     </div>
+                    <button type="button" class="pwa-install-button" data-pwa-install>Unduh / Instal Aplikasi</button>
                     <button type="button" id="tombol-mode" class="mode-button" aria-label="Ubah mode tampilan">Dark Mode</button>
                 </div>
             </header>
+            <p class="pwa-install-status" id="pwa-install-status" aria-live="polite"></p>
 
             <p id="status-aplikasi" role="status" aria-live="polite" aria-atomic="true"></p>
+            <p id="pwa-offline-status" role="status" aria-live="polite" aria-atomic="true"></p>
             <div class="notification-controls">
                 <button type="button" id="tombol-izin-notifikasi">Aktifkan Notifikasi</button>
                 <a href="notifications.php">Riwayat Notifications</a>
@@ -67,6 +78,12 @@ $notificationCsrf = $_SESSION['notification_csrf'];
     </footer>
     <script>
     window.NOTIFICATION_CSRF_TOKEN = <?= json_encode($notificationCsrf) ?>;
+    window.PWA_OFFLINE_DATA = <?= json_encode([
+        'userId' => (int) $user['id'],
+        'view' => $view,
+        'csrfToken' => $pwaSyncCsrf,
+        'todos' => $todos
+    ], JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) ?>;
     </script>
 
     <script>
@@ -431,6 +448,8 @@ $notificationCsrf = $_SESSION['notification_csrf'];
 
     <script src="notification-scheduler.js" defer></script>
     <script src="dashboard.js" defer></script>
+    <script src="pwa.js" defer></script>
+    <script src="pwa-offline.js" defer></script>
 </body>
 
 </html>

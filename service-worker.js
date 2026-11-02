@@ -1,9 +1,84 @@
+const CACHE_NAME = "iron-citadel-shell-v14";
+const SHELL_FILES = [
+    "./offline.html",
+    "./manifest.webmanifest",
+    "./index.html",
+    "./style.css",
+    "./dashboard.css",
+    "./dashboard.js",
+    "./notification-scheduler.js",
+    "./script.js",
+    "./pwa.js",
+    "./pwa-offline.js",
+    "./icons/icon-192.png",
+    "./icons/icon-512.png"
+];
+
 self.addEventListener("install", function(event) {
-    event.waitUntil(self.skipWaiting());
+    event.waitUntil(
+        caches.open(CACHE_NAME)
+            .then(function(cache) {
+                return cache.addAll(SHELL_FILES);
+            })
+            .then(function() {
+                return self.skipWaiting();
+            })
+    );
 });
 
 self.addEventListener("activate", function(event) {
-    event.waitUntil(self.clients.claim());
+    event.waitUntil(
+        caches.keys()
+            .then(function(names) {
+                return Promise.all(names.map(function(name) {
+                    if (name.startsWith("iron-citadel-shell-") && name !== CACHE_NAME) {
+                        return caches.delete(name);
+                    }
+                    return Promise.resolve(false);
+                }));
+            })
+            .then(function() {
+                return self.clients.claim();
+            })
+    );
+});
+
+self.addEventListener("fetch", function(event) {
+    const request = event.request;
+    if (request.method !== "GET") return;
+
+    const requestUrl = new URL(request.url);
+    if (requestUrl.origin !== self.location.origin) return;
+
+    if (request.mode === "navigate") {
+        event.respondWith(
+            fetch(request).catch(function() {
+                return caches.match("./offline.html");
+            })
+        );
+        return;
+    }
+
+    const isShellAsset = SHELL_FILES.some(function(path) {
+        return requestUrl.pathname === new URL(path, self.registration.scope).pathname;
+    });
+    if (!isShellAsset) return;
+
+    event.respondWith(
+        caches.match(request).then(function(cachedResponse) {
+            return cachedResponse || fetch(request).then(function(response) {
+                if (response.ok && response.type === "basic") {
+                    const copy = response.clone();
+                    caches.open(CACHE_NAME).then(function(cache) {
+                        return cache.put(request, copy);
+                    }).catch(function(error) {
+                        console.error("[pwa] Gagal menyimpan aset ke cache:", error);
+                    });
+                }
+                return response;
+            });
+        })
+    );
 });
 
 self.addEventListener("message", function(event) {

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#17243A">
+    <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="icon" href="./icons/icon-192.png" sizes="192x192">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./dashboard.css">
+    <title>Offline - The Iron Citadel</title>
+</head>
+<body>
+    <main class="offline-app">
+        <header class="offline-header">
+            <div class="offline-brand">
+                <img src="./icons/icon-192.png" width="44" height="44" alt="">
+                <div><p class="eyebrow">THE IRON CITADEL</p><h1>Offline workspace</h1></div>
+            </div>
+            <div class="offline-header-actions">
+                <button type="button" class="pwa-install-button" data-pwa-install hidden>Instal Aplikasi</button>
+                <button type="button" class="mode-button" id="offline-theme-button">Dark Mode</button>
+            </div>
+        </header>
+        <p class="offline-connection-status" id="offline-status" role="status" aria-live="polite">Memuat data tersimpan...</p>
+        <section class="offline-toolbar" aria-label="Workspace offline">
+            <div class="offline-view-switch" role="group" aria-label="Pilih workspace">
+                <button type="button" data-offline-view="personal">Personal</button>
+                <button type="button" data-offline-view="shared">Shared</button>
+            </div>
+            <button type="button" class="primary-button" id="offline-sync-button">Sinkronkan sekarang</button>
+        </section>
+        <section class="offline-panel">
+            <div class="offline-panel-heading">
+                <div><h2 id="offline-view-title">Tugas Personal</h2><p id="offline-account-label"></p></div>
+                <span id="offline-queue-count" class="offline-queue-count">0 perubahan tertunda</span>
+            </div>
+            <div id="offline-task-list" class="offline-task-list"></div>
+            <p id="offline-empty-state" class="empty-state" hidden>Belum ada data tugas tersimpan untuk workspace ini. Buka workspace ini sekali saat online agar data tersedia offline.</p>
+        </section>
+        <section class="offline-panel">
+            <h2>Tambah Tugas</h2>
+            <form id="offline-create-form" class="offline-form">
+                <label>Judul<input name="judul" maxlength="255" required></label>
+                <label>Keterangan<textarea name="keterangan" rows="3"></textarea></label>
+                <label>Kategori<select name="tipe"><option value="personal">Personal</option><option value="shared">Shared</option></select></label>
+                <label>Tenggat<input type="datetime-local" name="tenggat"></label>
+                <label>Waktu Notifikasi<input type="datetime-local" name="waktu_notifikasi"></label>
+                <label>Foto Tugas<input type="file" name="foto" accept="image/jpeg,image/png,image/gif,image/webp"></label>
+                <label>Deskripsi Foto<input name="deskripsi_foto" maxlength="200"></label>
+                <button type="submit" class="primary-button">Simpan Offline</button>
+            </form>
+        </section>
+        <p class="offline-note">Perubahan disimpan di perangkat ini dan dikirim ke server saat koneksi kembali. Pengingat dan riwayat notifikasi memerlukan koneksi.</p>
+        <p class="pwa-install-status" id="pwa-install-status" aria-live="polite"></p>
+        <dialog id="offline-edit-dialog" class="offline-edit-dialog">
+            <form id="offline-edit-form" class="offline-form">
+                <h2>Edit Tugas</h2>
+                <input type="hidden" name="id">
+                <label>Judul<input name="judul" maxlength="255" required></label>
+                <label>Keterangan<textarea name="keterangan" rows="3"></textarea></label>
+                <label>Kategori<select name="tipe"><option value="personal">Personal</option><option value="shared">Shared</option></select></label>
+                <label>Status<select name="selesai"><option value="0">Proses</option><option value="1">Selesai</option></select></label>
+                <label>Tenggat<input type="datetime-local" name="tenggat"></label>
+                <label>Waktu Notifikasi<input type="datetime-local" name="waktu_notifikasi"></label>
+                <label>Ganti Foto<input type="file" name="foto" accept="image/jpeg,image/png,image/gif,image/webp"></label>
+                <label>Deskripsi Foto<input name="deskripsi_foto" maxlength="200"></label>
+                <div class="offline-dialog-actions">
+                    <button type="button" id="offline-edit-cancel">Batal</button>
+                    <button type="submit" class="primary-button">Simpan Perubahan</button>
+                </div>
+            </form>
+        </dialog>
+    </main>
+    <script src="./pwa.js" defer></script>
+    <script src="./pwa-offline.js" defer></script>
+</body>
+</html>

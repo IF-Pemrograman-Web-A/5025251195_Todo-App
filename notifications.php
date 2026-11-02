@@ -82,7 +82,11 @@ $displayName = $_SESSION['nama_lengkap'] ?? 'Pengguna';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#17243A">
     <title>Notifications - The Iron Citadel</title>
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" href="icons/icon-192.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="dashboard.css">
 </head>
@@ -95,6 +99,8 @@ $displayName = $_SESSION['nama_lengkap'] ?? 'Pengguna';
                 <p class="eyebrow">THE IRON CITADEL</p>
                 <h1>Notifications</h1>
                 <p>Riwayat ini membedakan pemanggilan notifikasi, pengingat terlewat, deadline, dan tugas selesai.</p>
+                <button type="button" class="pwa-install-button" data-pwa-install hidden>Instal Aplikasi</button>
+                <p class="pwa-install-status" id="pwa-install-status" aria-live="polite"></p>
                 <a href="index.php?view=personal">Kembali ke task dashboard</a>
             </header>
 
@@ -161,5 +167,6 @@ $displayName = $_SESSION['nama_lengkap'] ?? 'Pengguna';
         </main>
         </div>
     </div>
+    <script src="pwa.js" defer></script>
 </body>
 </html>

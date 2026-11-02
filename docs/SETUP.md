@@ -39,6 +39,16 @@ Password seed disimpan sebagai hash dan diverifikasi dengan `password_verify()`.
 
 Buka dashboard via localhost/HTTPS, tekan **Aktifkan Notifikasi**, izinkan situs, lalu buat tugas dengan waktu pengingat mendatang. Dashboard perlu tetap terbuka agar jadwal diperiksa. Jika izin ditolak, ubah izin di browser dan muat ulang. Lihat [Panduan Developer: pengingat](DEVELOPER_GUIDE.md#pengingat-dan-riwayat-notifikasi).
 
+## Progressive Web App dan penggunaan offline
+
+PWA memerlukan localhost atau HTTPS. Login dan buka dashboard Personal/Shared saat online setidaknya sekali agar snapshot per akun/workspace tersimpan di IndexedDB. Service Worker menyimpan aset shell dan halaman offline; halaman PHP pribadi tidak dimasukkan ke Cache Storage.
+
+Saat offline, navigasi yang gagal membuka workspace lokal. Perubahan todo disimpan pada antrean perangkat dan disinkronkan berurutan ketika koneksi kembali. Jangan hapus data situs/IndexedDB sebelum perubahan tertunda tersinkron. Pengingat dan riwayat notifikasi memerlukan koneksi ke server.
+
+Di Edge, tombol **Unduh / Instal Aplikasi** selalu tersedia; tombol memakai prompt browser hanya jika event instalasi asli tersedia. Jika tidak, gunakan menu **Apps → Install this site as an app**. Untuk validasi, buka DevTools (`F12`): periksa **Application → Manifest**, **Service Workers**, dan **Cache Storage**; lalu centang **Network → Offline**, muat ulang, uji perubahan todo, aktifkan koneksi kembali, dan pastikan antrean tersinkron.
+
+Detail implementasi tersedia pada [implementasi PWA](PWA_IMPLEMENTATION.md), prosedur dan hasil validasi pada [pengujian](TESTING.md), serta tautan dokumentasi lain di [README](../README.md#dokumentasi).
+
 ## URL lokal
 
 - [Login](http://127.0.0.1:8000/login.php)

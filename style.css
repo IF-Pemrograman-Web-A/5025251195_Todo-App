@@ -1000,3 +1000,19 @@ a:focus-visible {
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;
 }
+
+.pwa-install-button {
+    min-height: 36px;
+    padding: 8px 12px;
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius);
+    background: var(--color-primary);
+    color: var(--color-primary-contrast);
+    font: inherit;
+    font-size: 12px;
+    font-weight: 650;
+    cursor: pointer;
+}
+
+.pwa-install-button:hover { background: var(--color-primary-hover); }
+.pwa-install-status { margin: 0; color: var(--color-muted); font-size: 12px; }

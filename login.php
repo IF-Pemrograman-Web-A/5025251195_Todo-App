@@ -37,7 +37,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#17243A">
     <title>Masuk - Todo App</title>
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" href="icons/icon-192.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
     <link rel="stylesheet" href="style.css">
     <style>
         .login-wrapper {
@@ -156,6 +160,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <h1>Masuk ke Akun</h1>
             <p class="subtitle">Todo App Enterprise - Dafa Dega Wijaya (5025251195)</p>
+            <button type="button" class="pwa-install-button" data-pwa-install hidden>Instal Aplikasi</button>
+            <p class="pwa-install-status" id="pwa-install-status" aria-live="polite"></p>
 
             <?php if ($error): ?>
                 <div class="login-error"><?= htmlspecialchars($error) ?></div>
@@ -188,5 +194,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } catch (e) {}
     </script>
+    <script src="pwa.js" defer></script>
 </body>
 </html>

@@ -490,6 +490,123 @@ body.dark-mode .editing-field select { color-scheme: dark; }
 }
 .table-wrap:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
 
+.offline-app {
+    width: min(100% - 32px, 1100px);
+    margin: 0 auto;
+    padding: 28px 0 42px;
+}
+.offline-header,
+.offline-brand,
+.offline-header-actions,
+.offline-toolbar,
+.offline-panel-heading,
+.offline-task-actions,
+.offline-dialog-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+.offline-header { margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--color-border); }
+.offline-brand { justify-content: flex-start; }
+.offline-brand .eyebrow { margin: 0 0 3px; }
+.offline-brand h1 { margin: 0; font-size: 20px; }
+.offline-header-actions { flex-wrap: wrap; }
+.offline-connection-status {
+    margin: 0 0 16px;
+    padding: 10px 12px;
+    border: 1px solid var(--color-info-border);
+    border-radius: var(--radius);
+    background: var(--color-info-bg);
+    color: var(--color-info-text);
+    font-size: 13px;
+}
+.offline-toolbar { margin-bottom: 16px; }
+.offline-view-switch { display: flex; gap: 6px; }
+.offline-view-switch button,
+.offline-task-actions button,
+.offline-dialog-actions button {
+    min-height: 36px;
+    padding: 7px 11px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font: inherit;
+    cursor: pointer;
+}
+.offline-view-switch button.active { border-color: var(--color-primary); color: var(--color-primary); }
+.offline-panel {
+    margin-bottom: 16px;
+    padding: 20px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+}
+.offline-panel h2 { margin: 0 0 12px; font-size: 17px; }
+.offline-panel-heading h2 { margin: 0 0 4px; }
+.offline-panel-heading p { margin: 0; color: var(--color-muted); font-size: 12px; }
+.offline-queue-count { color: var(--color-warning-text); font-size: 12px; }
+.offline-task-list { display: grid; gap: 10px; }
+.offline-task {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 14px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-surface-hover);
+}
+.offline-task.is-done .offline-task-copy h3 { text-decoration: line-through; color: var(--color-muted); }
+.offline-task-copy { min-width: 0; }
+.offline-task-copy h3 { margin: 0 0 5px; font-size: 14px; }
+.offline-task-copy p { margin: 0 0 7px; color: var(--color-muted); font-size: 13px; white-space: pre-wrap; }
+.offline-task-copy small { color: var(--color-muted); font-size: 11px; }
+.offline-task-photo { display: block; max-width: min(100%, 220px); max-height: 160px; margin-top: 10px; border-radius: var(--radius-sm); object-fit: cover; }
+.offline-task-actions { flex: 0 0 auto; justify-content: flex-end; flex-wrap: wrap; }
+.offline-task-actions button:hover,
+.offline-view-switch button:hover { border-color: var(--color-border-hover); }
+.offline-form { display: grid; gap: 12px; }
+.offline-form label { display: grid; gap: 5px; color: var(--color-text); font-size: 12px; font-weight: 600; }
+.offline-form input,
+.offline-form textarea,
+.offline-form select {
+    width: 100%;
+    min-height: 38px;
+    padding: 8px 10px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font: inherit;
+    font-size: 13px;
+}
+.offline-form textarea { resize: vertical; }
+.offline-form > button { justify-self: start; }
+.offline-note { color: var(--color-muted); font-size: 12px; line-height: 1.5; }
+.offline-edit-dialog { width: min(100% - 28px, 560px); max-height: 90vh; overflow-y: auto; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); color: var(--color-text); }
+.offline-edit-dialog::backdrop { background: rgba(12, 20, 32, .66); }
+.offline-dialog-actions { justify-content: flex-end; margin-top: 6px; }
+.offline-app > .pwa-install-status:empty { display: none; }
+.offline-app .empty-state { padding: 20px; color: var(--color-muted); text-align: center; }
+.offline-app .primary-button { width: auto; min-height: 36px; }
+.offline-app .pwa-install-status { margin-top: 8px; }
+.offline-card {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 24px;
+    color: var(--color-text);
+    text-align: center;
+}
+.offline-card h1 { margin: 0; font-size: clamp(24px, 5vw, 36px); }
+.offline-card > p:not(.eyebrow):not(.pwa-install-status) { max-width: 460px; color: var(--color-muted); line-height: 1.6; }
+
 /* Centered task edit dialog; the existing POST form stays inside the modal. */
 body.edit-modal-open { overflow: hidden; }
 .edit-modal-overlay {
@@ -589,6 +706,17 @@ body.edit-modal-open { overflow: hidden; }
 .account-switch-note { margin: 9px 0 0; color: var(--color-muted); font-size: 9px; line-height: 1.5; }
 
 @media (max-width: 640px) {
+    .offline-app { width: min(100% - 24px, 1100px); padding-top: 18px; }
+    .offline-header { align-items: flex-start; flex-direction: column; }
+    .offline-header-actions { width: 100%; }
+    .offline-header-actions button { flex: 1; }
+    .offline-toolbar { align-items: stretch; flex-direction: column; }
+    .offline-view-switch button { flex: 1; }
+    .offline-panel { padding: 14px; }
+    .offline-panel-heading { align-items: flex-start; flex-direction: column; }
+    .offline-task { flex-direction: column; }
+    .offline-task-actions { justify-content: flex-start; }
+    .offline-task-actions button { flex: 1; }
     .edit-modal-overlay { align-items: flex-end; padding: 8px; }
     .edit-modal-dialog { width: 100%; max-height: 90vh; border-radius: 15px 15px 10px 10px; }
     .edit-modal-header { gap: 12px; padding: 17px 17px 14px; }

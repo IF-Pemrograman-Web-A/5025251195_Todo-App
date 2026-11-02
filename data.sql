@@ -11,6 +11,7 @@ USE `todo_app`;
 -- ============================================
 DROP TABLE IF EXISTS `todo_notification_events`;
 DROP TABLE IF EXISTS `shared_todos`;
+DROP TABLE IF EXISTS `pwa_sync_operations`;
 DROP TABLE IF EXISTS `todos`;
 DROP TABLE IF EXISTS `users`;
 
@@ -20,6 +21,16 @@ CREATE TABLE `users` (
     `password` VARCHAR(255) NOT NULL,
     `nama_lengkap` VARCHAR(100) NOT NULL,
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `pwa_sync_operations` (
+    `user_id` INT NOT NULL,
+    `operation_id` CHAR(36) NOT NULL,
+    `response_json` LONGTEXT DEFAULT NULL,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`user_id`, `operation_id`),
+    KEY `pwa_sync_created_at` (`created_at`),
+    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ============================================

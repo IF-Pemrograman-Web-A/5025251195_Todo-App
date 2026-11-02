@@ -51,6 +51,7 @@ if ($reminderTimestamp === false) {
     data-todo-id="<?= (int) $todo['id'] ?>"
     data-status="<?= $is_done ? 'completed' : 'pending' ?>"
     data-overdue="<?= (!$is_done && $deadlineTimestamp !== false && $deadlineTimestamp <= time()) ? 'true' : 'false' ?>"
+    data-deadline-passed="<?= ($deadlineTimestamp !== false && $deadlineTimestamp <= time()) ? 'true' : 'false' ?>"
     data-search="<?= htmlspecialchars(trim(($todo['judul'] ?? '') . ' ' . ($todo['keterangan'] ?? '')), ENT_QUOTES, 'UTF-8') ?>">
     <td class="task-toggle-cell">
         <form method="POST" action="todo_actions.php" class="toggle-form">

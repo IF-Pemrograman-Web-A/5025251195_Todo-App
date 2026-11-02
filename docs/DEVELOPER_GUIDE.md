@@ -10,6 +10,7 @@ Referensi fitur, arsitektur, database, dan operasional The Iron Citadel.
 - [Peta modul](#peta-modul)
 - [Database](#database)
 - [Pengingat dan riwayat notifikasi](#pengingat-dan-riwayat-notifikasi)
+- [PWA dan sinkronisasi offline](#pwa-dan-sinkronisasi-offline)
 - [Keamanan dan batasan](#keamanan-dan-batasan)
 - [Pemeliharaan](#pemeliharaan)
 
@@ -64,7 +65,11 @@ Handler server tetap harus memeriksa izin; menyembunyikan tombol UI bukan kontro
 | `notification_actions.php` | Endpoint JSON snapshot dan pencatatan event. |
 | `notification_store.php` | Pembuatan tabel event dan konversi waktu. |
 | `notifications.php` | Upcoming, riwayat, overdue, completed. |
-| `service-worker.js` | Menampilkan notifikasi dan membuka tugas saat notifikasi dipilih. |
+| `service-worker.js` | Cache app shell, fallback navigasi offline, notifikasi, dan membuka tugas saat notifikasi dipilih. |
+| `manifest.webmanifest`, `icons/` | Metadata instalasi dan ikon PWA. |
+| `pwa.js` | Registrasi Service Worker dan tombol instalasi berbasis `beforeinstallprompt`. |
+| `offline.html`, `pwa-offline.js` | Workspace offline berbasis snapshot IndexedDB dan antrean perubahan. |
+| `pwa_sync.php` | Snapshot terautentikasi dan sinkronisasi operasi offline dengan CSRF/idempotensi. |
 | `dashboard.js` | Pencarian/filter, statistik, tema, interaksi dashboard. |
 | `style.css`, `dashboard.css` | Gaya, layout, komponen, tema, responsivitas. |
 | `data.sql` | Skema dan seed; `uploads/` menyimpan foto. |
@@ -100,6 +105,15 @@ Kolom utama `todos`: `user_id` pemilik; `tipe` personal/shared; `selesai` 0/1; `
 - `notifications.php` menampilkan agenda mendatang, hasil reminder, overdue, dan tugas selesai yang memiliki jadwal.
 - Aplikasi tidak mengirim Web Push saat browser tertutup. Itu membutuhkan backend push dan subscription yang belum tersedia.
 
+## PWA dan sinkronisasi offline
+
+- `service-worker.js` menggunakan Cache First untuk aset shell yang terdaftar dan Network First untuk navigasi, dengan fallback `offline.html` saat fetch gagal. Navigasi PHP dan endpoint lain tidak disimpan di Cache Storage; request yang bukan navigasi atau aset shell tidak diintersep.
+- Snapshot personal/shared dan foto disimpan di IndexedDB berdasarkan ID akun. Pengguna harus login dan memuat dashboard saat online sebelum menggunakan data tersebut offline.
+- Offline CRUD disimpan sebagai outbox di IndexedDB. `pwa_sync.php` memvalidasi sesi/CSRF, menerapkan create/update/status/delete, lalu menyimpan hasil berdasarkan ID operasi di `pwa_sync_operations` untuk retry idempoten.
+- Toggle status saat offline memperbarui snapshot Personal/Shared dan outbox dalam satu transaksi IndexedDB; untuk task lokal yang belum pernah diunggah, status diperbarui pada operasi `create` yang sudah ada. Snapshot server berikutnya menggabungkan status yang masih tertunda agar tidak menimpa perubahan lokal. Render workspace offline juga menjadwalkan ulang permintaan yang tiba saat render lain berjalan, sehingga pergantian workspace cepat tidak meninggalkan daftar yang stale. Saat online, form toggle dashboard tetap memakai POST normal; antrean offline disinkronkan otomatis ketika koneksi pulih.
+- Update mengirim field yang berubah saja, sehingga perubahan server pada field lain tidak tertimpa oleh snapshot lama. Operasi gagal tetap berada di antrean dan ditampilkan pada status sinkronisasi.
+- Logout menghapus akun aktif yang dipakai untuk membuka data lokal, tetapi tidak menghapus snapshot/outbox; data browser harus diperlakukan sebagai data lokal sensitif. Foto, notifikasi, dan riwayat reminder tetap mengikuti izin dan konektivitas browser/server.
+
 ## Keamanan dan batasan
 
 - Login memverifikasi hash dengan `password_verify()`; query database memakai PDO prepared statements; output tampilan di-escape.
@@ -112,3 +126,13 @@ Kolom utama `todos`: `user_id` pemilik; `tipe` personal/shared; `selesai` 0/1; `
 ## Pemeliharaan
 
 Perubahan skema dicatat di `data.sql` dan, untuk event reminder, `notification_store.php`. `data.sql` adalah seed/reset yang dapat menghapus data. Backup harus mencakup database dan direktori `uploads/` karena database hanya menyimpan path. Langkah setup ada di [SETUP.md](SETUP.md).
+
+## Dokumentasi E05
+
+- [Arsitektur](ARCHITECTURE.md)
+- [Instalasi](INSTALLATION.md)
+- [Implementasi PWA](PWA_IMPLEMENTATION.md)
+- [Scorecard pengujian](TESTING.md)
+- [Slot screenshot](SCREENSHOTS.md)
+- [Troubleshooting](TROUBLESHOOTING.md)
+- [README proyek](../README.md)
